@@ -8,7 +8,8 @@ using System.Data.OleDb;
 
 namespace Datos
 {
-    internal class AdministracionCompu
+     class AdministracionCompu
     {
+    
     }
 }
