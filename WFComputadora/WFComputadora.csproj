@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Computadora\CapaComputadora.csproj">
+      <Project>{297843f1-04b5-4208-902f-c86ff515c476}</Project>
+      <Name>CapaComputadora</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{ab375a1f-5d4a-4b86-a0a0-7f3a730ef212}</Project>
       <Name>Entidades</Name>

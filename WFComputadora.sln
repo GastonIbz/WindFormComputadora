@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFComputadora", "WFComputad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{AB375A1F-5D4A-4B86-A0A0-7F3A730EF212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{71075D88-943E-465B-8D23-58916CF0C537}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "Datos\CapaDatos.csproj", "{71075D88-943E-465B-8D23-58916CF0C537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computadora", "Computadora\Computadora.csproj", "{297843F1-04B5-4208-902F-C86FF515C476}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaComputadora", "Computadora\CapaComputadora.csproj", "{297843F1-04B5-4208-902F-C86FF515C476}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

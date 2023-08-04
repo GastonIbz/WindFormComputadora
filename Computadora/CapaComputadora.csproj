@@ -41,12 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LisComputadoras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj">
+    <ProjectReference Include="..\Datos\CapaDatos.csproj">
       <Project>{71075d88-943e-465b-8d23-58916cf0c537}</Project>
-      <Name>Datos</Name>
+      <Name>CapaDatos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{ab375a1f-5d4a-4b86-a0a0-7f3a730ef212}</Project>

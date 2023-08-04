@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.OleDb;
-namespace Datos
+using Entidades.Base_de_Datos;
+
+namespace CapaDatos
 {
-     class DatosdeConexion
+    public class DatosdeConexion
     {
-        public OleDbConnection conexion;
-        public string CadenadeConexion= @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source = C:\Users\Ibañez\Desktop\BDComputadora.accdb";
+        protected OleDbConnection conexion;
+        public string CadenadeConexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ibañez\Desktop\BDComputadora.accdb";
 
 
         public DatosdeConexion()
@@ -32,21 +34,21 @@ namespace Datos
                 throw new Exception("Error al tratar de abrir la conexión", error);
             }
 
-            }
-            public void Cerrarconexion()
+        }
+        public void Cerrarconexion()
 
+        {
+            try
             {
-                try
-                {
-                    if (conexion.State == ConnectionState.Open)
-                        conexion.Close();
-                }
-                catch (Exception error)
-                {
-                    throw new Exception("Error al tratar de cerrar la conexión", error);
-                }
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Error al tratar de cerrar la conexión", error);
+            }
         }
 
     }
-    }
+}
 

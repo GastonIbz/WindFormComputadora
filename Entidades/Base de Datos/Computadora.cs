@@ -54,10 +54,10 @@ namespace Entidades.Base_de_Datos
             ultimaActualizacion = DateTime.MinValue;
         }
 
-        public Computadora(int cod, string modelo)
+        public Computadora(int cod, string modelo, int app)
         {
             this.modelo = modelo;
-            aplicaciones = 0;
+            aplicaciones = app;
             prendida = true;
             ultimaActualizacion = DateTime.MinValue;
             this.codigo = cod;
@@ -79,7 +79,7 @@ namespace Entidades.Base_de_Datos
             if (!prendida)
             {
                 prendida = true;
-                ultimaActualizacion = DateTime.Now;
+
             }
         }
 
@@ -88,10 +88,13 @@ namespace Entidades.Base_de_Datos
             if (prendida)
             {
                 prendida = false;
-                ultimaActualizacion = DateTime.Now;
+
             }
         }
-
+        public void ActualizarUltimaActualizacion(DateTime nuevaFecha)
+        {
+            ultimaActualizacion = nuevaFecha;
+        }
         #endregion
 
     }
