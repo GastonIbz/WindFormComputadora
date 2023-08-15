@@ -15,6 +15,7 @@ namespace Entidades.Base_de_Datos
         private int codigo;
         private string modelo;
         private string cuil;
+        private string patente;
         #endregion
 
         #region Propiedades
@@ -23,10 +24,15 @@ namespace Entidades.Base_de_Datos
             set { modelo = value; }
             get { return modelo; }
         }
-        public string PCuil
+        public string Pcuil
         {
             set { cuil = value; }
             get { return cuil; }
+        }
+        public string Ppatente
+        {
+            set { patente = value; }
+            get { return patente; }
         }
         public int Pcodigo
         {
@@ -59,7 +65,7 @@ namespace Entidades.Base_de_Datos
             ultimaActualizacion = DateTime.MinValue;
         }
 
-        public Computadora(int cod, string modelo, int app, string cuil)
+        public Computadora(int cod, string modelo, int app, string cuil, string patente)
         {
             this.modelo = modelo;
             aplicaciones = app;
@@ -67,6 +73,7 @@ namespace Entidades.Base_de_Datos
             ultimaActualizacion = DateTime.MinValue;
             this.codigo = cod;
             this.cuil = cuil;
+            this.patente = patente;
         }
         #endregion
 
@@ -109,7 +116,20 @@ namespace Entidades.Base_de_Datos
             // Verificar si el cuil coincide con el patrón
             return System.Text.RegularExpressions.Regex.IsMatch(cuil, patron);
         }
+
+        private bool ValidarFormatoPatente(string patente)
+        {
+            // El patrón de expresión regular para el formato XXX999
+            string patron = @"^[A-Z]{3}\d{3}$";
+
+            // Verificar si la patente coincide con el patrón
+            return System.Text.RegularExpressions.Regex.IsMatch(patente, patron);
+        }
+
+
+
         #endregion
 
     }
+
 }

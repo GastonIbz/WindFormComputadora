@@ -66,7 +66,7 @@
             this.Dgv_computadora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_computadora.Location = new System.Drawing.Point(125, 278);
             this.Dgv_computadora.Name = "Dgv_computadora";
-            this.Dgv_computadora.Size = new System.Drawing.Size(594, 150);
+            this.Dgv_computadora.Size = new System.Drawing.Size(730, 367);
             this.Dgv_computadora.TabIndex = 14;
             // 
             // Tab_computadorac
@@ -76,7 +76,7 @@
             this.Tab_computadorac.Location = new System.Drawing.Point(125, 22);
             this.Tab_computadorac.Name = "Tab_computadorac";
             this.Tab_computadorac.SelectedIndex = 0;
-            this.Tab_computadorac.Size = new System.Drawing.Size(598, 250);
+            this.Tab_computadorac.Size = new System.Drawing.Size(730, 250);
             this.Tab_computadorac.TabIndex = 13;
             // 
             // SelectTab
@@ -100,7 +100,7 @@
             this.SelectTab.Location = new System.Drawing.Point(4, 22);
             this.SelectTab.Name = "SelectTab";
             this.SelectTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SelectTab.Size = new System.Drawing.Size(590, 224);
+            this.SelectTab.Size = new System.Drawing.Size(722, 224);
             this.SelectTab.TabIndex = 0;
             this.SelectTab.Text = "Carga de Productos";
             // 
@@ -214,7 +214,7 @@
             this.Tab_movimientoc.Location = new System.Drawing.Point(4, 22);
             this.Tab_movimientoc.Name = "Tab_movimientoc";
             this.Tab_movimientoc.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_movimientoc.Size = new System.Drawing.Size(590, 224);
+            this.Tab_movimientoc.Size = new System.Drawing.Size(722, 224);
             this.Tab_movimientoc.TabIndex = 1;
             this.Tab_movimientoc.Text = "Movimiento de Productos";
             // 
@@ -251,9 +251,9 @@
             // Btn_salir2
             // 
             this.Btn_salir2.BackColor = System.Drawing.Color.White;
-            this.Btn_salir2.Location = new System.Drawing.Point(486, 184);
+            this.Btn_salir2.Location = new System.Drawing.Point(595, 184);
             this.Btn_salir2.Name = "Btn_salir2";
-            this.Btn_salir2.Size = new System.Drawing.Size(84, 25);
+            this.Btn_salir2.Size = new System.Drawing.Size(104, 25);
             this.Btn_salir2.TabIndex = 11;
             this.Btn_salir2.Text = "Salir";
             this.Btn_salir2.UseVisualStyleBackColor = false;
@@ -282,9 +282,9 @@
             // Btn_borrar
             // 
             this.Btn_borrar.BackColor = System.Drawing.Color.White;
-            this.Btn_borrar.Location = new System.Drawing.Point(486, 68);
+            this.Btn_borrar.Location = new System.Drawing.Point(595, 77);
             this.Btn_borrar.Name = "Btn_borrar";
-            this.Btn_borrar.Size = new System.Drawing.Size(84, 52);
+            this.Btn_borrar.Size = new System.Drawing.Size(104, 34);
             this.Btn_borrar.TabIndex = 6;
             this.Btn_borrar.Text = "Borrar datos";
             this.Btn_borrar.UseVisualStyleBackColor = false;
@@ -350,7 +350,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1059, 669);
             this.Controls.Add(this.Dgv_computadora);
             this.Controls.Add(this.Tab_computadorac);
             this.Name = "FormComputadora";
