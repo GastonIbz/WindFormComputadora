@@ -288,6 +288,7 @@
             this.Btn_borrar.TabIndex = 6;
             this.Btn_borrar.Text = "Borrar datos";
             this.Btn_borrar.UseVisualStyleBackColor = false;
+            this.Btn_borrar.Click += new System.EventHandler(this.Btn_borrar_Click);
             // 
             // Lbl_patente
             // 
