@@ -14,6 +14,7 @@ namespace Entidades.Base_de_Datos
         private DateTime ultimaActualizacion;
         private int codigo;
         private string modelo;
+        private string cuil;
         #endregion
 
         #region Propiedades
@@ -22,7 +23,11 @@ namespace Entidades.Base_de_Datos
             set { modelo = value; }
             get { return modelo; }
         }
-
+        public string PCuil
+        {
+            set { cuil = value; }
+            get { return cuil; }
+        }
         public int Pcodigo
         {
             set { codigo = value; }
@@ -54,13 +59,14 @@ namespace Entidades.Base_de_Datos
             ultimaActualizacion = DateTime.MinValue;
         }
 
-        public Computadora(int cod, string modelo, int app)
+        public Computadora(int cod, string modelo, int app, string cuil)
         {
             this.modelo = modelo;
             aplicaciones = app;
             prendida = true;
             ultimaActualizacion = DateTime.MinValue;
             this.codigo = cod;
+            this.cuil = cuil;
         }
         #endregion
 
@@ -94,6 +100,14 @@ namespace Entidades.Base_de_Datos
         public void ActualizarUltimaActualizacion(DateTime nuevaFecha)
         {
             ultimaActualizacion = nuevaFecha;
+        }
+        private bool ValidarFormatoCuil(string cuil)
+        {
+            // El patrón de expresión regular para el formato XX-XXXXXXXX-X
+            string patron = @"\d{2}-\d{8}-\d{1}";
+
+            // Verificar si el cuil coincide con el patrón
+            return System.Text.RegularExpressions.Regex.IsMatch(cuil, patron);
         }
         #endregion
 

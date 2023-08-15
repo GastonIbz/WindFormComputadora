@@ -34,11 +34,17 @@ namespace WFComputadora
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    Dgv_computadora.Rows.Add(dr[4], dr[3], dr[1], dr[2].ToString());
+                    Dgv_computadora.Rows.Add(
+                        dr[4], // Codigo
+                        dr[3], // Modelo
+                        dr[1], // Aplicaciones
+                        dr[2], // Última Actualización
+                        dr[5]  // CUIL
+                    );
                 }
             }
             else
-                MessageBox.Show("No hay computadora");
+                MessageBox.Show("No existe la computadora");
         }
 
 
@@ -49,7 +55,16 @@ namespace WFComputadora
             Dgv_computadora.Columns.Add("1", "Modelo"); // Crea columna de Modelo
             Dgv_computadora.Columns.Add("2", "Aplicaciones"); // Crea columna de Aplicaciones
             Dgv_computadora.Columns.Add("3", "Ultima Actualización"); // Crea columna Ultima actualización
+            Dgv_computadora.Columns.Add("4", "CUIL"); // Crea columna Cuil.
 
+        }
+        private bool ValidarFormatoCuil(string cuil)
+        {
+            // El patrón de expresión regular para el formato XX-XXXXXXXX-X
+            string patron = @"\d{2}-\d{8}-\d{1}";
+
+            // Verificar si el cuil coincide con el patrón
+            return System.Text.RegularExpressions.Regex.IsMatch(cuil, patron);
         }
         private void Btn_cargar_Click(object sender, EventArgs e)
         {
@@ -75,6 +90,13 @@ namespace WFComputadora
                     MessageBox.Show("Ingrese un valor válido para las aplicaciones, solo debe contener números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // Validar valor del TextBox de CUIL
+                if (string.IsNullOrEmpty(Txtb_cuil.Text))
+                {
+                    MessageBox.Show("Debe ingresar un valor para el CUIL.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
 
                 // Valida que el valor del Txtb_aplicaciones deba contener un número entero que esté entre 0 y 15.
                 if (!int.TryParse(Txtb_aplicaciones.Text, out int cantidadAplicaciones) || cantidadAplicaciones < 0 || cantidadAplicaciones > 15)
@@ -90,11 +112,22 @@ namespace WFComputadora
                     return;
                 }
 
+                if (!ValidarFormatoCuil(Txtb_cuil.Text))
+                {
+                    MessageBox.Show("Ingrese un CUIL válido en el formato 11-12345678-1.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Variable para almacenar nuevos datos de computadora
                 Computadora NuevaCompu;
 
                 // Instancia una nueva computadora utilizando los valores escritos en los textos
-                NuevaCompu = new Computadora(int.Parse(Txtb_codigo.Text), Txtb_modelo.Text, int.Parse(Txtb_aplicaciones.Text));
+                NuevaCompu = new Computadora(
+         int.Parse(Txtb_codigo.Text),
+         Txtb_modelo.Text,
+         int.Parse(Txtb_aplicaciones.Text),
+         Txtb_cuil.Text // Asignar el valor del CUIL
+     );
 
                 // Obtiene la fecha seleccionada del Date Time
                 DateTime fechaSeleccionada = Datetime_actualizacion.Value;
@@ -104,9 +137,10 @@ namespace WFComputadora
 
                 // Valores de los Label
                 {
-                    Lbl_codigomov.Text = NuevaCompu.Pcodigo.ToString(); // Asigna el valor del código al label
-                    Lbl_modelomov.Text = NuevaCompu.Pmodelo; // Asigna el valor del modelo al label
+                    Lbl_codigomov.Text = "Código: " + NuevaCompu.Pcodigo.ToString(); // Asigna el valor del código al label
+                    Lbl_modelomov.Text = "Modelo: " + NuevaCompu.Pmodelo; // Asigna el valor del modelo al label
                     Lbl_actualizacionmov.Text = "Última actualización: " + NuevaCompu.PultimaActualizacion.ToString("dd/MM/yyyy HH:mm:ss"); // Se asigna el valor y texto al label para mostrar la ultima actualización
+                    Lbl_cuilmov.Text = "CUIL: " + NuevaCompu.PCuil; // Mostrar el CUIL en el label
                     Lbl_aplicacionesmov.Text = "Hay " + NuevaCompu.Paplicaciones.ToString() + " aplicaciones ejecutándose en este momento"; // Se asigna el valor y texto al label ostrar la cantidad de aplicaciones
                 }
                 // Selecciona una pestaña específica del Tab para que al cargar los datos se mueva de pestaña
@@ -115,7 +149,13 @@ namespace WFComputadora
                 MessageBox.Show("Datos de la computadora cargados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); // Mensaje modal
 
                 // Agrega una nueva fila al DataGridView con los datos de la computadora
-                Dgv_computadora.Rows.Add(NuevaCompu.Pmodelo.ToString(), NuevaCompu.Pcodigo.ToString(), NuevaCompu.Paplicaciones.ToString(), NuevaCompu.PultimaActualizacion.ToString("dd/MM/yyyy HH:mm:ss"));
+                Dgv_computadora.Rows.Add(
+       NuevaCompu.Pcodigo.ToString(),
+       NuevaCompu.Pmodelo,
+       NuevaCompu.Paplicaciones.ToString(),
+       NuevaCompu.PultimaActualizacion.ToString("dd/MM/yyyy HH:mm:ss"),
+       NuevaCompu.PCuil // Agrega el CUIL a la fila del DataGridView
+   );
 
                 Fila = Dgv_computadora.Rows.Count - 1; // Actualiza el valor de la variable Fila
 
