@@ -31,6 +31,10 @@
             this.Dgv_computadora = new System.Windows.Forms.DataGridView();
             this.Tab_computadorac = new System.Windows.Forms.TabControl();
             this.SelectTab = new System.Windows.Forms.TabPage();
+            this.Txtb_patente = new System.Windows.Forms.TextBox();
+            this.Txtb_cuil = new System.Windows.Forms.TextBox();
+            this.Lbl_cuil = new System.Windows.Forms.Label();
+            this.Lbl_patente = new System.Windows.Forms.Label();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Txtb_codigo = new System.Windows.Forms.TextBox();
             this.Lbl_codigo = new System.Windows.Forms.Label();
@@ -42,6 +46,8 @@
             this.Btn_cargar = new System.Windows.Forms.Button();
             this.Lbl_modelo = new System.Windows.Forms.Label();
             this.Tab_movimientoc = new System.Windows.Forms.TabPage();
+            this.Lbl_patentemov = new System.Windows.Forms.Label();
+            this.Lbl_cuilmov = new System.Windows.Forms.Label();
             this.Lbl_actualizacionmov = new System.Windows.Forms.Label();
             this.Lbl_modelomov = new System.Windows.Forms.Label();
             this.Lbl_codigomov = new System.Windows.Forms.Label();
@@ -49,12 +55,6 @@
             this.Lbl_titulo = new System.Windows.Forms.Label();
             this.Lbl_aplicacionesmov = new System.Windows.Forms.Label();
             this.Btn_borrar = new System.Windows.Forms.Button();
-            this.Lbl_patente = new System.Windows.Forms.Label();
-            this.Lbl_cuil = new System.Windows.Forms.Label();
-            this.Txtb_cuil = new System.Windows.Forms.TextBox();
-            this.Txtb_patente = new System.Windows.Forms.TextBox();
-            this.Lbl_cuilmov = new System.Windows.Forms.Label();
-            this.Lbl_patentemov = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_computadora)).BeginInit();
             this.Tab_computadorac.SuspendLayout();
             this.SelectTab.SuspendLayout();
@@ -66,7 +66,7 @@
             this.Dgv_computadora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_computadora.Location = new System.Drawing.Point(125, 278);
             this.Dgv_computadora.Name = "Dgv_computadora";
-            this.Dgv_computadora.Size = new System.Drawing.Size(730, 367);
+            this.Dgv_computadora.Size = new System.Drawing.Size(641, 367);
             this.Dgv_computadora.TabIndex = 14;
             // 
             // Tab_computadorac
@@ -76,7 +76,7 @@
             this.Tab_computadorac.Location = new System.Drawing.Point(125, 22);
             this.Tab_computadorac.Name = "Tab_computadorac";
             this.Tab_computadorac.SelectedIndex = 0;
-            this.Tab_computadorac.Size = new System.Drawing.Size(730, 250);
+            this.Tab_computadorac.Size = new System.Drawing.Size(641, 250);
             this.Tab_computadorac.TabIndex = 13;
             // 
             // SelectTab
@@ -100,16 +100,52 @@
             this.SelectTab.Location = new System.Drawing.Point(4, 22);
             this.SelectTab.Name = "SelectTab";
             this.SelectTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SelectTab.Size = new System.Drawing.Size(722, 224);
+            this.SelectTab.Size = new System.Drawing.Size(633, 224);
             this.SelectTab.TabIndex = 0;
             this.SelectTab.Text = "Carga de Productos";
+            // 
+            // Txtb_patente
+            // 
+            this.Txtb_patente.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.Txtb_patente.Location = new System.Drawing.Point(191, 161);
+            this.Txtb_patente.Name = "Txtb_patente";
+            this.Txtb_patente.Size = new System.Drawing.Size(130, 20);
+            this.Txtb_patente.TabIndex = 19;
+            // 
+            // Txtb_cuil
+            // 
+            this.Txtb_cuil.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.Txtb_cuil.Location = new System.Drawing.Point(191, 130);
+            this.Txtb_cuil.Name = "Txtb_cuil";
+            this.Txtb_cuil.Size = new System.Drawing.Size(130, 20);
+            this.Txtb_cuil.TabIndex = 18;
+            // 
+            // Lbl_cuil
+            // 
+            this.Lbl_cuil.AutoSize = true;
+            this.Lbl_cuil.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_cuil.Location = new System.Drawing.Point(140, 131);
+            this.Lbl_cuil.Name = "Lbl_cuil";
+            this.Lbl_cuil.Size = new System.Drawing.Size(45, 19);
+            this.Lbl_cuil.TabIndex = 17;
+            this.Lbl_cuil.Text = "Cuil:";
+            // 
+            // Lbl_patente
+            // 
+            this.Lbl_patente.AutoSize = true;
+            this.Lbl_patente.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_patente.Location = new System.Drawing.Point(113, 162);
+            this.Lbl_patente.Name = "Lbl_patente";
+            this.Lbl_patente.Size = new System.Drawing.Size(72, 19);
+            this.Lbl_patente.TabIndex = 16;
+            this.Lbl_patente.Text = "Patente:";
             // 
             // Btn_salir
             // 
             this.Btn_salir.BackColor = System.Drawing.Color.White;
-            this.Btn_salir.Location = new System.Drawing.Point(453, 171);
+            this.Btn_salir.Location = new System.Drawing.Point(518, 186);
             this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(101, 41);
+            this.Btn_salir.Size = new System.Drawing.Size(101, 26);
             this.Btn_salir.TabIndex = 15;
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.UseVisualStyleBackColor = false;
@@ -181,9 +217,9 @@
             // 
             this.Btn_cargar.BackColor = System.Drawing.SystemColors.Window;
             this.Btn_cargar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Btn_cargar.Location = new System.Drawing.Point(453, 36);
+            this.Btn_cargar.Location = new System.Drawing.Point(518, 44);
             this.Btn_cargar.Name = "Btn_cargar";
-            this.Btn_cargar.Size = new System.Drawing.Size(101, 43);
+            this.Btn_cargar.Size = new System.Drawing.Size(101, 49);
             this.Btn_cargar.TabIndex = 3;
             this.Btn_cargar.Text = "Cargar";
             this.Btn_cargar.UseVisualStyleBackColor = false;
@@ -214,9 +250,29 @@
             this.Tab_movimientoc.Location = new System.Drawing.Point(4, 22);
             this.Tab_movimientoc.Name = "Tab_movimientoc";
             this.Tab_movimientoc.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_movimientoc.Size = new System.Drawing.Size(722, 224);
+            this.Tab_movimientoc.Size = new System.Drawing.Size(633, 224);
             this.Tab_movimientoc.TabIndex = 1;
             this.Tab_movimientoc.Text = "Movimiento de Productos";
+            // 
+            // Lbl_patentemov
+            // 
+            this.Lbl_patentemov.AutoSize = true;
+            this.Lbl_patentemov.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_patentemov.Location = new System.Drawing.Point(16, 156);
+            this.Lbl_patentemov.Name = "Lbl_patentemov";
+            this.Lbl_patentemov.Size = new System.Drawing.Size(50, 16);
+            this.Lbl_patentemov.TabIndex = 18;
+            this.Lbl_patentemov.Text = "label1";
+            // 
+            // Lbl_cuilmov
+            // 
+            this.Lbl_cuilmov.AutoSize = true;
+            this.Lbl_cuilmov.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_cuilmov.Location = new System.Drawing.Point(16, 123);
+            this.Lbl_cuilmov.Name = "Lbl_cuilmov";
+            this.Lbl_cuilmov.Size = new System.Drawing.Size(50, 16);
+            this.Lbl_cuilmov.TabIndex = 17;
+            this.Lbl_cuilmov.Text = "label1";
             // 
             // Lbl_actualizacionmov
             // 
@@ -251,7 +307,7 @@
             // Btn_salir2
             // 
             this.Btn_salir2.BackColor = System.Drawing.Color.White;
-            this.Btn_salir2.Location = new System.Drawing.Point(595, 184);
+            this.Btn_salir2.Location = new System.Drawing.Point(503, 184);
             this.Btn_salir2.Name = "Btn_salir2";
             this.Btn_salir2.Size = new System.Drawing.Size(104, 25);
             this.Btn_salir2.TabIndex = 11;
@@ -282,75 +338,19 @@
             // Btn_borrar
             // 
             this.Btn_borrar.BackColor = System.Drawing.Color.White;
-            this.Btn_borrar.Location = new System.Drawing.Point(595, 77);
+            this.Btn_borrar.Location = new System.Drawing.Point(503, 41);
             this.Btn_borrar.Name = "Btn_borrar";
-            this.Btn_borrar.Size = new System.Drawing.Size(104, 34);
+            this.Btn_borrar.Size = new System.Drawing.Size(104, 59);
             this.Btn_borrar.TabIndex = 6;
             this.Btn_borrar.Text = "Borrar datos";
             this.Btn_borrar.UseVisualStyleBackColor = false;
             this.Btn_borrar.Click += new System.EventHandler(this.Btn_borrar_Click);
             // 
-            // Lbl_patente
-            // 
-            this.Lbl_patente.AutoSize = true;
-            this.Lbl_patente.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_patente.Location = new System.Drawing.Point(113, 162);
-            this.Lbl_patente.Name = "Lbl_patente";
-            this.Lbl_patente.Size = new System.Drawing.Size(72, 19);
-            this.Lbl_patente.TabIndex = 16;
-            this.Lbl_patente.Text = "Patente:";
-            // 
-            // Lbl_cuil
-            // 
-            this.Lbl_cuil.AutoSize = true;
-            this.Lbl_cuil.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_cuil.Location = new System.Drawing.Point(140, 131);
-            this.Lbl_cuil.Name = "Lbl_cuil";
-            this.Lbl_cuil.Size = new System.Drawing.Size(45, 19);
-            this.Lbl_cuil.TabIndex = 17;
-            this.Lbl_cuil.Text = "Cuil:";
-            // 
-            // Txtb_cuil
-            // 
-            this.Txtb_cuil.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.Txtb_cuil.Location = new System.Drawing.Point(191, 130);
-            this.Txtb_cuil.Name = "Txtb_cuil";
-            this.Txtb_cuil.Size = new System.Drawing.Size(130, 20);
-            this.Txtb_cuil.TabIndex = 18;
-            // 
-            // Txtb_patente
-            // 
-            this.Txtb_patente.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.Txtb_patente.Location = new System.Drawing.Point(191, 161);
-            this.Txtb_patente.Name = "Txtb_patente";
-            this.Txtb_patente.Size = new System.Drawing.Size(130, 20);
-            this.Txtb_patente.TabIndex = 19;
-            // 
-            // Lbl_cuilmov
-            // 
-            this.Lbl_cuilmov.AutoSize = true;
-            this.Lbl_cuilmov.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_cuilmov.Location = new System.Drawing.Point(16, 123);
-            this.Lbl_cuilmov.Name = "Lbl_cuilmov";
-            this.Lbl_cuilmov.Size = new System.Drawing.Size(50, 16);
-            this.Lbl_cuilmov.TabIndex = 17;
-            this.Lbl_cuilmov.Text = "label1";
-            // 
-            // Lbl_patentemov
-            // 
-            this.Lbl_patentemov.AutoSize = true;
-            this.Lbl_patentemov.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_patentemov.Location = new System.Drawing.Point(16, 156);
-            this.Lbl_patentemov.Name = "Lbl_patentemov";
-            this.Lbl_patentemov.Size = new System.Drawing.Size(50, 16);
-            this.Lbl_patentemov.TabIndex = 18;
-            this.Lbl_patentemov.Text = "label1";
-            // 
             // FormComputadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 669);
+            this.ClientSize = new System.Drawing.Size(823, 669);
             this.Controls.Add(this.Dgv_computadora);
             this.Controls.Add(this.Tab_computadorac);
             this.Name = "FormComputadora";

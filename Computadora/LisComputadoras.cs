@@ -13,13 +13,17 @@ namespace CapaComputadora
     {
         AdministracionCompu DatosObjComputadora = new AdministracionCompu();
 
+        // Realiza operaciones de alta, baja y modificación en la base de datos.
         public int abmComputadora(string accion, Computadora objComputadora)
         {
+            // Llama al método abmComputadora de la clase AdministracionCompu y devuelve su resultado.
             return DatosObjComputadora.abmComputadora(accion, objComputadora);
         }
 
+        // Obtiene un conjunto de datos de las computadoras según el filtro especificado.
         public DataSet ListadoComputadoras(string cual)
         {
+            // Llama al método ListadoComputadoras de la clase AdministracionCompu y devuelve su resultado.
             return DatosObjComputadora.ListadoComputadoras(cual);
         }
     }
