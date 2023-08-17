@@ -26,7 +26,7 @@ namespace WFComputadora
 
         private void LLenarDGV()
         {
-            // Limpia y llena el DataGridView con datos de la base de datos.
+            // Limpia y llena el DataGridView con los datos cargados en los TextBox que se guardan en la Base de datos.
             Dgv_computadora.Rows.Clear();
             DataSet ds = new DataSet();
             ds = objCapaComputadora.ListadoComputadoras("Todos");
@@ -45,7 +45,7 @@ namespace WFComputadora
 
         private void Dgv_iniciar()
         {
-            // Da inicio a las columnas del DataGridView.
+            // Inicia las columnas del DataGridView.
             Dgv_computadora.Columns.Add("0", "Codigo");
             Dgv_computadora.Columns.Add("1", "Modelo");
             Dgv_computadora.Columns.Add("2", "Aplicaciones");
@@ -56,16 +56,32 @@ namespace WFComputadora
 
         private bool ValidarFormatoCuil(string cuil)
         {
-            // Verifica si el CUIL tiene el formato correcto (XX-XXXXXXXX-X).
-            string pat = @"\d{2}-\d{8}-\d{1}";
-            return System.Text.RegularExpressions.Regex.IsMatch(cuil, pat);
+            // Patrón de expresión regular para verificar el formato de CUIL (XX-XXXXXXXX-X).
+            string patronFormato = @"\d{2}-\d{8}-\d{1}";
+
+            // Verifica si el CUIL cumple con el patrón de formato establecido.
+            if (!System.Text.RegularExpressions.Regex.IsMatch(cuil, patronFormato))
+            {
+                return false; // El formato no es válido
+            }
+
+            // Eliminar los guiones para contar la cantidad de dígitos numéricos.
+            string cuilSinGuiones = cuil.Replace("-", "");
+
+            // Verifica si el CUIL tiene la cantidad correcta de dígitos numéricos (11).
+            if (cuilSinGuiones.Length != 11)
+            {
+                return false; // La cantidad de dígitos no es válida
+            }
+
+            return true; // Tanto el formato como la cantidad son válidos
         }
         private bool ValidarFormatoPatente(string patente)
         {
             // Verifica si la patente tiene el formato correcto (ASD123).
             string pat = @"^[A-Z]{3}\d{3}$";
 
-            // Verificia si la patente coincide con el patrón.
+            // Verifica si la patente coincide con el patrón.
             return System.Text.RegularExpressions.Regex.IsMatch(patente, pat);
         }
         private bool ValidarCodigoUnico(int codigo)
@@ -73,7 +89,7 @@ namespace WFComputadora
             // Recorre todas las filas del DataGridView.
             foreach (DataGridViewRow row in Dgv_computadora.Rows)
             {
-                // Verifica que la columna del código no sea nulla y que coincida con el código que esta validando.
+                // Verifica que la columna del código no sea nula y que coincida con el código que esta validando.
                
                 if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == codigo.ToString())
                 {
@@ -210,6 +226,9 @@ namespace WFComputadora
 
             DateTime fechaSeleccionada = Datetime_actualizacion.Value; // Obtener la fecha seleccionada en el DateTimePicker
             NuevaCompu.ActualizarUltimaActualizacion(fechaSeleccionada); // Actualizar la última fecha de actualización de la computadora
+
+            objCapaComputadora.abmComputadora("Agregar", NuevaCompu);
+            objCapaComputadora.abmComputadora("Borrar", NuevaCompu);
 
             // Muestra los datos cargados en el Datagridview en los Label del TabMovimiento.
 

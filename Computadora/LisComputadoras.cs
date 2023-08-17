@@ -12,6 +12,7 @@ namespace CapaComputadora
     public class LisComputadoras
     {
         AdministracionCompu DatosObjComputadora = new AdministracionCompu();
+       
 
         // Realiza operaciones de alta, baja y modificación en la base de datos.
         public int abmComputadora(string accion, Computadora objComputadora)
@@ -25,6 +26,11 @@ namespace CapaComputadora
         {
             // Llama al método ListadoComputadoras de la clase AdministracionCompu y devuelve su resultado.
             return DatosObjComputadora.ListadoComputadoras(cual);
+        }
+        public int BorrarComputadora(int codigo)
+        {
+            // Llamar al método abmComputadora con la acción "Borrar" y el código de la computadora a borrar
+            return DatosObjComputadora.abmComputadora("Borrar", new Computadora { Pcodigo = codigo });
         }
     }
 }

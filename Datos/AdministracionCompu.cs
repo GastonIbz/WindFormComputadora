@@ -20,8 +20,15 @@ namespace CapaDatos
             if (accion == "Agregar")
             {
                 // Consulta para agregar una nueva computadora a la base de datos.
-                consulta = "INSERT INTO Computadoras (Codigo, Modelo, Aplicaciones, UltimaActualizacion) VALUES (" + objComputadora.Pcodigo + ",'" + objComputadora.Pmodelo + "', '" + objComputadora.Paplicaciones + "', '" + objComputadora.PultimaActualizacion + "');";
-            }
+                consulta = "INSERT INTO computadoras (Aplicaciones, UltimaActualizacion, Modelo, Codigo, Cuil, Patente) VALUES (" +
+              objComputadora.Paplicaciones + ",'" +
+              objComputadora.PultimaActualizacion + "', '" +
+              objComputadora.Pmodelo + "', " +
+              objComputadora.Pcodigo + ", '" +
+              objComputadora.Pcuil + "', '" +
+              objComputadora.Ppatente + "')";
+            
+        }
             else if (accion == "Borrar")
             {
                 // Consulta para borrar una computadora de la base de datos.
