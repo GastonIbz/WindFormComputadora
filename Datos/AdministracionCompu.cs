@@ -11,6 +11,7 @@ namespace CapaDatos
 {
     public class AdministracionCompu : DatosdeConexion
     {
+        // Método para realizar operaciones de alta, baja y modificación en la base de datos.
         public int abmComputadora(string accion, Computadora objComputadora)
         {
             int resultado = -1;
@@ -18,14 +19,12 @@ namespace CapaDatos
 
             if (accion == "Agregar")
             {
+                // Consulta para agregar una nueva computadora a la base de datos.
                 consulta = "INSERT INTO Computadoras (Codigo, Modelo, Aplicaciones, UltimaActualizacion) VALUES (" + objComputadora.Pcodigo + ",'" + objComputadora.Pmodelo + "', '" + objComputadora.Paplicaciones + "', '" + objComputadora.PultimaActualizacion + "');";
             }
-            // else if (accion == "Modificar") // Hace falta poner el boton modificar - se puede modificar de forma manual.
-            // {
-            //    consulta = "UPDATE Computadoras SET Modelo='" + objComputadora.Pmodelo + "', Aplicaciones='" + objComputadora.Paplicaciones + "' WHERE Codigo=" + objComputadora.Pcodigo + ";";
-            // } 
             else if (accion == "Borrar")
             {
+                // Consulta para borrar una computadora de la base de datos.
                 consulta = "DELETE FROM Computadoras WHERE Codigo=" + objComputadora.Pcodigo + ";";
             }
 
@@ -33,7 +32,7 @@ namespace CapaDatos
             try
             {
                 Abrirconexion();
-                resultado = cmd.ExecuteNonQuery();
+                resultado = cmd.ExecuteNonQuery(); // Ejecuta el resultado y devuelve la cantidad de filas afectadas.
             }
             catch (Exception error)
             {
@@ -45,9 +44,10 @@ namespace CapaDatos
                 cmd.Dispose();
             }
 
-            return resultado;
+            return resultado; // Devuelve el resultado de la operación.
         }
 
+        // Obtiene un conjunto de datos de la computadora según el filtro especificado.
         public DataSet ListadoComputadoras(string cual) // para 1 o todos los datos según el código
         {
             string consulta = string.Empty;
@@ -64,7 +64,7 @@ namespace CapaDatos
             {
                 Abrirconexion();
                 da.SelectCommand = cmd;
-                da.Fill(ds);
+                da.Fill(ds); // Rellena el DataSet con los datos obtenidos.
             }
             catch (Exception error)
             {
@@ -76,7 +76,7 @@ namespace CapaDatos
                 cmd.Dispose();
             }
 
-            return ds;
+            return ds; // Devuelve el conjunto de datos.
         }
     }
 }
