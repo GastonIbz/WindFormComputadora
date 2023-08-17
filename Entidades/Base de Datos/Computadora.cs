@@ -8,7 +8,10 @@ namespace Entidades.Base_de_Datos
 {
     public class Computadora
     {
+
         #region Atributos
+        // Atributos de la clase computadora.
+        // Número de aplicaciones, Última actualización, Código, Modelo, Número de CUIL y Patente.
         private int aplicaciones;
         private bool prendida;
         private DateTime ultimaActualizacion;
@@ -19,6 +22,7 @@ namespace Entidades.Base_de_Datos
         #endregion
 
         #region Propiedades
+        // Propiedades que permiten obtener atributos relacionados con la información de la computadora.
         public string Pmodelo
         {
             set { modelo = value; }
@@ -64,7 +68,8 @@ namespace Entidades.Base_de_Datos
             prendida = false;
             ultimaActualizacion = DateTime.MinValue;
         }
-
+        // Constructor de la clase Computadora.
+        // Establece el modelo, la cantidad de aplicaciones, Última actualización, Código, Número de CUIL y patente de la computadora.
         public Computadora(int cod, string modelo, int app, string cuil, string patente)
         {
             this.modelo = modelo;
@@ -78,15 +83,19 @@ namespace Entidades.Base_de_Datos
         #endregion
 
         #region Metodos
+
+        // Incrementa la cantidad de aplicaciones ejecutándose en la computadora.
         public void Ingreso(int cant)
         {
             aplicaciones = aplicaciones + cant;
         }
-
+        // Decrementa la cantidad de aplicaciones ejecutándose en la computadora
         public void Salida(int cant)
         {
             aplicaciones = aplicaciones - cant;
         }
+
+        // Enciende la computadora si no está prendida.
         public void Prender()
         {
             if (!prendida)
@@ -95,7 +104,7 @@ namespace Entidades.Base_de_Datos
 
             }
         }
-
+        // Apaga la computadora si está prendida.
         public void Apagar()
         {
             if (prendida)
@@ -104,26 +113,29 @@ namespace Entidades.Base_de_Datos
 
             }
         }
+
+
+        // Actualiza la fecha de la última actualización de la computadora.
         public void ActualizarUltimaActualizacion(DateTime nuevaFecha)
         {
             ultimaActualizacion = nuevaFecha;
         }
+
+        // Verifica si un CUIL tiene el formato válido.
         private bool ValidarFormatoCuil(string cuil)
         {
-            // El patrón de expresión regular para el formato XX-XXXXXXXX-X
-            string patron = @"\d{2}-\d{8}-\d{1}";
+            // El formato correcto es: 11-12345678-1.
+            string pat = @"\d{2}-\d{8}-\d{1}";
 
             // Verificar si el cuil coincide con el patrón
-            return System.Text.RegularExpressions.Regex.IsMatch(cuil, patron);
+            return System.Text.RegularExpressions.Regex.IsMatch(cuil, pat);
         }
-
+        // Verifica si una patente tiene el formato válido .
         private bool ValidarFormatoPatente(string patente)
         {
-            // El patrón de expresión regular para el formato XXX999
-            string patron = @"^[A-Z]{3}\d{3}$";
-
-            // Verificar si la patente coincide con el patrón
-            return System.Text.RegularExpressions.Regex.IsMatch(patente, patron);
+            // El formato correcto es: ASD123.
+            string pat = @"^[A-Z]{3}\d{3}$";
+            return System.Text.RegularExpressions.Regex.IsMatch(patente, pat);
         }
 
 
