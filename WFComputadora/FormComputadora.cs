@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades.Base_de_Datos;
 using CapaComputadora;
+using System.Text.RegularExpressions;
 
 namespace WFComputadora
 {
@@ -34,6 +35,7 @@ namespace WFComputadora
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
+
                     Dgv_computadora.Rows.Add(dr[4], dr[3], dr[1], dr[2], dr[5], dr[6]);
                 }
             }
@@ -56,33 +58,19 @@ namespace WFComputadora
 
         private bool ValidarFormatoCuil(string cuil)
         {
-            // Patrón de expresión regular para verificar el formato de CUIL (XX-XXXXXXXX-X).
-            string patronFormato = @"\d{2}-\d{8}-\d{1}";
+            // Patrón de expresión regular para verificar el formato de CUIL (AAAAAAAAAA).
+            string patronFormato = @"^\d{2}\d{8}\d{1}$";
 
             // Verifica si el CUIL cumple con el patrón de formato establecido.
-            if (!System.Text.RegularExpressions.Regex.IsMatch(cuil, patronFormato))
-            {
-                return false; // El formato no es válido
-            }
-
-            // Eliminar los guiones para contar la cantidad de dígitos numéricos.
-            string cuilSinGuiones = cuil.Replace("-", "");
-
-            // Verifica si el CUIL tiene la cantidad correcta de dígitos numéricos (11).
-            if (cuilSinGuiones.Length != 11)
-            {
-                return false; // La cantidad de dígitos no es válida
-            }
-
-            return true; // Tanto el formato como la cantidad son válidos
+            return Regex.IsMatch(cuil, patronFormato);
         }
         private bool ValidarFormatoPatente(string patente)
         {
-            // Verifica si la patente tiene el formato correcto (ASD123).
-            string pat = @"^[A-Z]{3}\d{3}$";
+            // Verifica si la patente tiene el formato correcto (LLNNNLL o LLLNNN).
+            string pat = @"^[A-Z]{3}\d{3}$|^[A-Z]{2}\d{3}[A-Z]{2}$";
 
             // Verifica si la patente coincide con el patrón.
-            return System.Text.RegularExpressions.Regex.IsMatch(patente, pat);
+            return Regex.IsMatch(patente, pat);
         }
         private bool ValidarCodigoUnico(int codigo)
         {
@@ -246,7 +234,10 @@ namespace WFComputadora
             MessageBox.Show("Datos de la computadora cargados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Agrega los datos de la computadora al DataGridView.
-            Dgv_computadora.Rows.Add(NuevaCompu.Pcodigo, NuevaCompu.Pmodelo, NuevaCompu.Paplicaciones, NuevaCompu.PultimaActualizacion.ToString("dd/MM/yyyy HH:mm:ss"), NuevaCompu.Pcuil, NuevaCompu.Ppatente);
+            string cuilConGuiones = NuevaCompu.Pcuil.Insert(2, "-").Insert(11, "-");
+            Dgv_computadora.Rows.Add(NuevaCompu.Pcodigo, NuevaCompu.Pmodelo, NuevaCompu.Paplicaciones, NuevaCompu.PultimaActualizacion.ToString("dd/MM/yyyy HH:mm:ss"), cuilConGuiones, NuevaCompu.Ppatente);
+
+
             // Actualiza la variable de fila.
             Fila = Dgv_computadora.Rows.Count - 1;
         }
