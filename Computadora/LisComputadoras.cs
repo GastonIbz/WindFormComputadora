@@ -12,7 +12,7 @@ namespace CapaComputadora
     public class LisComputadoras
     {
         AdministracionCompu DatosObjComputadora = new AdministracionCompu();
-       
+
 
         // Realiza operaciones de alta, baja y modificación en la base de datos.
         public int abmComputadora(string accion, Computadora objComputadora)

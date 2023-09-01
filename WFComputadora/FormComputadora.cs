@@ -58,7 +58,7 @@ namespace WFComputadora
 
         private bool ValidarFormatoCuil(string cuil)
         {
-            // Patrón de expresión regular para verificar el formato de CUIL (AAAAAAAAAA).
+            // Patrón de expresión regular para verificar el formato de CUIL (12345678912).
             string patronFormato = @"^\d{2}\d{8}\d{1}$";
 
             // Verifica si el CUIL cumple con el patrón de formato establecido.
@@ -148,12 +148,12 @@ namespace WFComputadora
                 MessageBox.Show("Debe ingresar un valor para el CUIL.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Valida que la cantidad de aplicaciones esté en el rango permitido, (Hasta 15 aplicaciones).
-            if (!int.TryParse(Txtb_aplicaciones.Text, out int cantidadAplicaciones) || cantidadAplicaciones < 0 || cantidadAplicaciones > 15)
+            // Valida que la cantidad de aplicaciones esté en el rango permitido, (Hasta 20 aplicaciones).
+            if (!int.TryParse(Txtb_aplicaciones.Text, out int cantidadAplicaciones) || cantidadAplicaciones < 0 || cantidadAplicaciones > 20)
             {
-                if (cantidadAplicaciones > 15)
+                if (cantidadAplicaciones > 20)
                 {
-                    MessageBox.Show("No pueden haber más de 15 aplicaciones ejecutadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No pueden haber más de 20 aplicaciones ejecutadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -168,16 +168,16 @@ namespace WFComputadora
                 MessageBox.Show("Debe ingresar una patente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Valida que se ingrese correcamente el formato de la patente, (ASD123).
+            // Valida que se ingrese correcamente el formato de la patente, (ASD123 o AA123AA).
             if (!ValidarFormatoPatente(Txtb_patente.Text))
             {
                 MessageBox.Show("Ingrese una patente válida en el formato ASD123.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Valida que se ingrese correcamente el formato del Cuil, (11-12345678-1).
+            // Valida que se ingrese correcamente el formato del Cuil, (11123456781).
             if (!ValidarFormatoCuil(Txtb_cuil.Text))
             {
-                MessageBox.Show("Ingrese un CUIL válido en el formato 11-12345678-1.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un CUIL válido en el formato 11123456781.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             // Valida que el Código sea único.
